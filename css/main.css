@@ -1,0 +1,652 @@
+@charset "utf-8" ;
+
+#wrapper{
+    position: relative;
+    min-width: 1440px;
+    /* 
+    -본문 컨첸트의 안전사이즈 : 1440px
+    -wrapper의 기본 너비 값은 body태그의
+    너비값에 의해 정해짐.
+    -body태그의 너비값은 브라우저 폭에 의해 정해짐.
+   - 브라우저가 좁아질 경우 weapper폭도 좁아지면서 콘텐츠의
+    정렬,배경색,테두리 등에 영향을 끼침.
+    -최소너비값을 지정해두면 브라우저 폭이 줄어들어도
+    wrapper의 너비값은 1440px 로 고정
+   - 브라우저의 폭이 늘어날때는 wrapper의 너비도 같이늘어남.
+    */
+}
+
+/* 탑배너 */
+#topBanner{
+    height: 40px;
+    background-color: #002053;
+    position: relative;
+}
+#topBanner .content a{
+    line-height: 40px;
+    margin-left: auto;
+    margin-right:auto ;
+    display: block;
+    width: 600px;
+    color: #fff;
+    text-align: center;
+}
+#topBanner .btnClose{
+position: absolute;
+top: 4px;
+right: 40px;
+}
+#topBanner .btnClose button{
+    width: 32px;
+    background-color: transparent;
+    border: 0;
+    height: 32px;
+    text-indent: -99999999px;
+    /* 공간은 그대로, 글자내용만
+    화면 왼쪽으로 이동됨.
+    값을 크게 만들어 어떤 크기의
+    화면에서도 보이지않게 만듬*/
+    
+    background-image: url(../img/btn_x_wh_32x32.png);
+}
+/*헤더 영역*/
+#header{
+    z-index: 500;
+    position: absolute;
+    box-sizing: border-box;
+    /*
+    box-sizing은 width속성의 범위 기준을 결정하는 속성.
+
+    {box-sizing: content-box;}
+    width값의 범위가 여백과 테두리를 제외하고 실제 내용이 처리될수있는
+    공간을 가리킴.
+
+    {box-sizing: border-box;}
+    width값의 범위가 테두리 끝에서 끝까지로 인식됨.
+    너비값으로 지정된 범위 안에서 테두리와 여뱍이 표현되고,
+    컨텐츠는 테두리와 여백이 표현된 나머지 영역에 맞춰 작성됨.
+    */
+    top: 40px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 0.5;
+    height: 100px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+.gnd{
+    display: flex;
+}
+.gnd ul{
+    display: flex;
+    gap: 32px;
+}
+/* 화면을 장식하는 요소를 위해 html에 태그를 만들수있지만
+html입장에서 보면 의미없는 태그가 만들어지는것과 같음.
+이때는 css에서 가상태그를 활용 하면됨.
+각 블럭 요소 태그는 2개의 가상태그를 가질수있음.
+선택자::before=> 선택자의 첫째 자식 요소로 인식되는 가상태그
+선택자::after=> 선택자의 막내 자식 요소로 인식되는 가상태그
+
+가상태그를 사용하기 위해서는 content속성이 필수로있어야하마.
+여기서는 공간만 필요한 상태니 content속성값 공백처리
+
+가상태그는 인라인요소의 성질을 가짐.
+공간을 처리하기위해 태그성질을 block으로 처리해야함
+(여기서 disply속성을 지워도 공간을 표시해줌>flex영향임)
+*/
+
+.gnd .g1::after{
+    display: block;
+    content: "";
+    width: 12PX;
+    height: 12px;
+    
+    margin-top: 7px;
+    margin-right: 32px;
+}
+.gnd li a{
+    font-weight: 700;
+    color: #fff;
+    font-size: 18px;
+}
+#header .icons{
+    display: flex;
+}
+#header .icons ul{
+display: flex;
+}
+#header .icons li a, #header .icons .search button{
+    display: block;
+    width: 56px;
+    height: 56px;
+    text-indent: -99999999999px;
+}
+#header .logo a{
+width: 100px;
+height: 32px;
+text-indent: -9999999999px;
+background-image: url(../img/logo_nv.png);
+display: block;
+}
+#header .icons .location a{
+    background-image:  url(../img/ico-store-nv-56x56.png);
+
+   
+}
+#header .icons .search button{
+    border: 0;
+background-image: url(../img/ico-search-nv-56x56.png);
+
+}
+
+#header .login a{
+  
+      background-image: url(../img/ico-mypage-nv-56x56.png);
+}
+#header .cart a{
+background-image: url(../img/ico-cart-nv-56x56.png);
+}
+#header .cart {
+    position: relative;
+}
+#header .cart .count{
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    font-size: 10px;
+    line-height: 20px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+/* 본문 공통 */
+#container{
+    display: flex;
+    flex-direction: column;
+    gap: 160px;
+}
+.titleText{
+    margin-bottom: 40px;
+    font-size: 36px;
+    text-align: center;
+}
+.btnMore{
+    width: 120px;
+    margin: 0 auto; 
+}
+.btnMore{
+    display: block;
+    border: 1px solid #ddd;
+    line-height: 38px;
+    color: #121212;
+    text-align: center;
+    border-radius: 20px;
+}
+
+/*본문1*/
+.mainhero{
+    position: relative;
+}
+.mainhero .slide{
+    position: relative;
+    overflow: hidden;
+}
+.mainhero .slideimg{
+width: 1440px;
+margin-left: auto;
+margin-right: auto;
+
+}
+.mainSlidees .slideimg img{
+
+margin-left: -240px;
+}
+.mainhero .slidetext{
+    position: absolute;
+    bottom: 169px;
+    left:50%;
+    margin-left: -720px;
+    
+}
+.mainhero .slidetext .slideTitle{
+font-size: 48px;
+margin-bottom: 8px;
+font-weight: 700;
+color: #fff;
+}
+.mainhero .slidetext a{
+    display: inline-block;
+    padding:0 40px;
+    border: 1px solid #fff;
+    border-radius: 30px;
+
+    font-size: 16px;
+    color: #fff;
+    line-height: 48px;
+}
+.mainhero .mainSlideController{
+    position: absolute;
+    bottom: 80px;
+    left:  50%;
+    display: flex;
+    width: 1440px;
+    margin-left: -720px;
+    
+}
+.mainhero .mainSlideController .mainPager{
+  flex: 1;
+  /* 
+  플랙스 아이템의 너비값을 플랙시블(유연하게)
+
+  현재 오른쪽에 배치된 이전/다음버튼의 너비값과
+  버튼사이의 간격값이 px로 정해진 값이 있음.
+  flex: 1 값을 적용하게되면 오른쪽의 고정값을 제외한
+  나머지를 자신의 너비값으로 사용하도록 만들 수 있음.
+  */ 
+margin-right: 23px;
+
+}
+.mainhero .mainSlideController .mainPager ul{
+    display: flex;
+}
+.mainhero .mainSlideController .mainPager li{
+    width: 16.66%;
+   
+    opacity: 0.2;
+}
+.mainhero .mainSlideController .mainPager li button{
+width: 100%;
+height: 40px;
+}
+.mainhero .mainSlideController .mainPager li button span{
+display: block;
+width: 100%;
+height: 2px;
+background-color: #fff;
+text-indent: -999999999px;
+}
+.mainhero .mainPager .active{
+    opacity: 0.8;
+}
+
+
+.mainhero .btnPrev{
+    width: 40px;
+    margin-right: 2px;
+
+}
+
+.mainhero .btnNext{
+width: 40px;
+
+}
+.mainhero .btnPrev button, .mainhero .btnNext button{
+    width: 40px;
+    height: 40px;
+    text-indent: -999999999999px;
+}
+.mainhero .btnPrev button{
+background-image: url(../img/btn_prev_wh_40x40.png);
+}
+.mainhero .btnnext button{
+background-image: url(../img/btn_next_wh_40x40.png);
+}
+
+
+/*본문2*/
+.itemListWrap{
+    width: 1440px;
+    margin: 0 auto;
+    background-color: antiquewhite;
+}
+.main2 .titleText{
+    margin-bottom: 20pz;
+}
+.main2 .hashTabBtn{
+    margin-bottom: 40px;
+}
+.main2 .hashTabBtn ul{
+display: flex;
+justify-content: center;
+gap:20px;
+}
+.main2 .hashTabBtn button{
+    /*
+    버튼태그의 박스모델은 xoc-sizwing: border-box로 지정되있음
+    */
+    color: black;
+    padding-bottom: 10px;
+    font-size: 18px;
+    height: 27px;
+}
+.main2.hashTabBtn .active button{
+    color: black;
+    border-bottom: 2px solid #121212;
+}
+.itemList ul{
+    display: flex;
+    justify-content: space-between;
+}
+.itemList li{
+    width: 345px;
+    position: relative;
+}
+.itemList li img{
+    width: 345px;
+}
+.itemList li img{
+    width: 100%;
+    height: auto;
+}
+.itemList li .woman{
+    margin-bottom: 4px;
+    color: #121212;
+}
+.itemList li .name{
+    margin-bottom: 20px;
+    margin-bottom: 18px;
+    color: #121212;
+}
+.itemList li .price{
+font-size: 16px;
+color: #121212;
+}
+.itemList li .favo{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.itemList li .favo{
+width: 52px;
+height: 52px;
+text-indent: -999999999px;
+}
+/*본문 3-기획전*/
+.special{
+    width: 1440px;
+    margin:  auto;
+    background-color: #bdb2c7;
+}
+.special ul{
+    display: flex;
+    justify-content: space-between
+      
+}
+.special ul li{
+    width: 464px;
+    text-align: center;
+}
+
+
+.special li img{
+    width: 100%;
+    height: auto;
+}
+.special .title{
+    margin-bottom: 8px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #121212;
+}
+.special .name{
+    margin-bottom: 24px;
+    font-size: 16px;
+    color: #888;
+}
+.special.tool{
+margin: 0 auto;
+width: 159px;
+height: 38px;
+border: 1px solid #ddd;
+border-radius: 50%;
+color: #121212;
+line-height: 38px;
+}
+/* 본문4번영역
+*/
+.recommendstyle{
+    margin-bottom: 60px;
+    overflow: hidden
+}
+.recommendstylelist ul{
+display: flex;
+justify-content: space-between;
+padding: 20px;
+width: 3340px;
+}
+.recommendstylelist li{
+    width: 400px;
+}
+.recommendstylelist li img{
+    width: 100%;
+    height: auto;
+}
+/* 본문 5 */
+.main5 {
+    width: 1440px; 
+    margin: auto;
+}
+.content{
+    margin-bottom: 60px;
+}
+.main5 ul{
+    display: flex;
+    justify-content: space-between;
+}
+.main5 ul li{
+    width: 464px;
+    text-align: left;
+}
+.main5 ul li img{
+    width: 100%;
+    height: auto;
+}
+.main5 ul li .people{
+   margin-bottom: 4px;
+    font-size: 14px;
+    color: #121212;
+}
+.main5 ul li .coffee{
+    color: #121212;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+.main5 ul li .oats{
+  margin-bottom: 8px;
+   color: #999;
+   font-size: 16px;
+}
+/* 본문6*/
+
+.titleText1{
+   font-size: 36px;
+    text-align: center;
+}
+
+
+.recommendItem .recommendItemList ul{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.recommendItem .recommendItemList ul li {
+    width: 400px;
+   
+}
+.recommendItemList ul li img{
+    width: 100%;
+    height: auto
+}
+.recommendItemList li .man{
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: #121212;
+}
+.recommendItemList li .name3{
+font-size: 18px;
+color: #121212;
+margin-bottom: 26px;
+}
+.recommendItemList li .price1{
+    font-size: 16px;
+    color: #121212;
+    margin-bottom: 8px;
+}
+.recommendItem .more a {
+    display: block;
+ 
+    width: 100px;      
+    height: 0px;     
+    line-height: 40px; 
+    font-size: 14px;  
+  
+    border: 1px solid #ddd;
+    color: #121212;
+    text-align: center;
+    border-radius: 20%; 
+    padding: 0;       
+    margin: 10px auto; 
+}
+/* 메인7*/
+
+.instar .instarLogo{
+position: relative;
+width: 1440px;
+display: flex;
+justify-content: space-between;
+}
+.instar .instarLogo .instarLOGO{
+    background-image: url(../img/ico-instar-32x32.png);
+        text-indent: -999999999999999px;
+}
+.instar .email{
+    font-size: 28px;
+    color: rgb(0, 0, 0);
+    line-height: 30px;
+}
+
+.instar .instarPhoto  ul{
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+}
+/* 푸터*/
+#foother{
+    position: relative;
+    padding-top: 24px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 80px;
+    background-color: #eee;
+}
+.foot1 {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+background-color: lawngreen;
+}
+.foot1 .left{
+    display: flex;
+    gap: 120px;
+}
+ .fLOGO{
+    width: 80px;
+    height: 25px;
+    background-image: url(../img/logo_nv.png);
+    background-size: 100% auto;
+    text-indent: -999999999999999px;
+}
+.foot1 .left .ir a{
+    font-size: 19px;
+    font-weight: 700;
+    color: #121212;
+}
+ .fSns ul{
+    display: flex;
+}
+ .fSns li a{
+display: block;
+height: 52px;
+text-indent: -9999999px;
+}
+ .fSns .insta a{
+    width: 52px;
+    background-image: url(../img/sns-instar-52x52.png);
+}
+ .fSns .kakao a{
+    width: 40px;
+    background-image: url(../img/sns-kakao-52x52.png);
+}
+ .fSns .face a{
+    width: 54px;
+    background-image: url(../img/sns-facebook-40x52.png);
+}
+.fSns .youtube a{
+    width: 52px;
+    background-image: url(../img/sns-youtube-54x52.png);
+}
+
+.foot2{
+    background-color: aqua;
+    justify-content: space-between;
+    display: flex;
+}
+.foot2 .fMenu{
+    margin-bottom: 40px;
+}
+.foot2 .left{
+    padding: 200px;
+}
+ .fMenu ul, .foot2 .fsecurityMenu ul{
+    display: flex;
+}
+.foot2 .fsecurityMenu li::after,
+.foot2 .fsecurityMenu li::after{
+    content: "|";
+    display: inline-block;
+    width: 1px;
+    margin-right: 20px;
+    margin-left: 20px;
+    height: 12px;
+    opacity: 0.2;
+    background-color: #121212;
+}
+.foot2 .fMenu li:last-child::after,
+.foot2 .fsecurityMenu :last-child::after
+{
+    display: none;
+}
+.foot2 .fMenu li a,
+.foot2 .fsecurityMenu li a{
+    color: #121212;
+}
+.foot .fMenu .point a,
+.foot2 .fsecurityMenu .point a{
+    font-weight: 700;
+}
+.foot2 .fInfo
+.foot2 .copyright{
+    margin-bottom: 40px;
+    line-height: 26px;
+    color: #121212;
+    opacity: 0.5;
+}
+.foot2 .fInfo span{
+    margin-right: 16px;
+}
+.foot2 .fInfo a
+.foot2 .copyright{
+    color: #121212;
+    text-decoration: underline;
+}
+.foot2 .copyright a{
+    margin-left: 16px;
+}
